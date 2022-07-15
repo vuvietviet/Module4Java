@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/layout :: head"></head>
+<body>
+<h3>Add Product</h3>
+<p>
+    <a th:href="@{/product}">
+        Back to product list
+    </a>
+</p>
+<div id="form">
+    <form th:action="@{/product/save}" th:object="${product}"
+          method="POST" novalidate="novalidate">
+        <div>
+            <label>Id</label>
+            <input type="text" th:field="*{id}"/>
+        </div>
+        <div>
+            <label>Name</label>
+            <input type="text" th:field="*{name}"/>
+        </div>
+        <div>
+            <label>Price</label>
+            <input type="text" th:field="*{price}"/>
+        </div>
+        <div>
+            <label>Img</label>
+            <input type="text" th:field="*{img}"/>
+        </div>
+        <div>
+            <label>Catergory</label>
+            <select name="idC">
+                <option th:each="c : ${catergoryList}" th:text="${c.getNameC()}" th:value="${c.getIdC()}"></option>
+            </select>
+        </div>
+        <div>
+            <label>Status</label>
+            <select th:field="*{status}">
+                <option th:value="true">Con hang</option>
+                <option th:value="false">Het hang</option>
+            </select>
+        </div>
+        <input type="submit" value="Save"/>
+    </form>
+</div>
+<footer th:replace="/layout :: footer"></footer>
+</body>
+</html>
