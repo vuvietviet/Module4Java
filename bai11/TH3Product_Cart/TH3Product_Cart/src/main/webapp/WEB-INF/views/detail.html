@@ -6,19 +6,19 @@
 </head>
 <body>
 <p>
-    <a href="/shopping-cart">Your cart</a>
+    <a href="/shop">Shop</a>
 </p>
 <table border="1">
     <tr>
         <td>Name</td>
         <td>Price</td>
-        <td>Add To Cart</td>
     </tr>
-    <th:block th:each="product:${products}">
+    <th:block th:each="product:${product}">
         <tr>
-            <td><a th:text="${product.name}" th:href="@{/detail/__${product.id}__ }"></a></td>
+            <td th:text="${product.id}"></td>
+            <td th:text="${product.name}"></td>
             <td th:text="${product.price}"></td>
-            <td><a th:href="@{/add/__${product.id}__(action='list')}">Add To Cart</a></td>
+            <td th:text="${product.description}"></td>
         </tr>
     </th:block>
 </table>
