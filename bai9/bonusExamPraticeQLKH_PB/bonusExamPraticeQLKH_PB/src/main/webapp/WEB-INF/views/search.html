@@ -13,13 +13,6 @@
 
 <div class="container">
     <h2>Basic Table</h2>
-    <p th:text="${message}" style="color: blue"></p>
-    <a type="button" class="btn btn-success" href="/create">Add</a>
-
-    <form action="/search" method="post">
-        <input name="name" placeholder="Enter name">
-        <input value="Search" type="submit">
-    </form>
 
     <table class="table">
         <thead>
@@ -33,7 +26,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each="s :${staffs}">
+        <tr th:each="s :${staffList}">
             <td th:text="${s.id}"></td>
             <td ><a th:text="${s.name}" th:href="@{/details/__${s.id}__ }"></a></td>
             <td th:text="${s.age}"></td>
@@ -46,16 +39,6 @@
         </tr>
         </tbody>
     </table>
-
-    <b th:text="${staffs.number} + 1"></b> / <b th:text="${staffs.totalPages}"></b>
-    <br>
-
-    <button th:if="${staffs.hasPrevious()}"><a th:href="@{/staffs(page=${staffs.number}-1)}"><<=</a></button>
-
-    <a th:each="i: ${#numbers.sequence(1, staffs.totalPages)}" class="btn btn-dark" th:text="${i}"
-       th:href="@{/staffs(page=${i} - 1)}"></a>
-
-    <button th:if="${staffs.hasNext()}"><a th:href="@{/staffs(page=${staffs.number}+1)}">=>></a></button>
 </div>
 </body>
 </html>

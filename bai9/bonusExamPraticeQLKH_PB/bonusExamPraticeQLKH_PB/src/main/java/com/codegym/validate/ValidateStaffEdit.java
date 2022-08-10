@@ -21,7 +21,7 @@ public class ValidateStaffEdit implements Validator {
     @Override
     public void validate(Object target, Errors errors) {
         Staff staff = (Staff) target;
-        if ((staff.getAge() < 18) && (staff.getAge() > 55)) {
+        if ((staff.getAge() < 18) || (staff.getAge() > 55)) {
             errors.rejectValue("age","error Age","Age >= 18 and <= 55");
         }
         if (!staff.getName().matches("(^[A-Z][A-Za-z\\s]+)")){

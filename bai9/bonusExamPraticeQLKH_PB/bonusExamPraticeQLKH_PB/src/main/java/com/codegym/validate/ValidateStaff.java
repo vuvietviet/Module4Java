@@ -26,7 +26,7 @@ public class ValidateStaff implements Validator {
         if (optional.isPresent()) {
             errors.rejectValue("id", "error ID","Duplicate ID");
         }
-        if ((staff.getAge() < 18) && (staff.getAge() > 55)) {
+        if ((staff.getAge() < 18) || (staff.getAge() > 55)) {
             errors.rejectValue("age","error Age","Age >= 18 and <= 55");
         }
         if (!staff.getName().matches("(^[A-Z][A-Za-z\\s]+)")){

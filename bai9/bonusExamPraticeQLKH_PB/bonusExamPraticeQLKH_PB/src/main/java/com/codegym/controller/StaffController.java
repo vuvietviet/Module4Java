@@ -103,6 +103,7 @@ public class StaffController {
         return modelAndView;
     }
 
+
     @PostMapping("/delete/{id}")
     public ModelAndView delete(@PathVariable Long id,RedirectAttributes redirectAttributes) {
         staffService.delete(id);
@@ -116,6 +117,14 @@ public class StaffController {
         Optional<Staff> staff = staffService.findById(id);
         ModelAndView modelAndView = new ModelAndView("details");
         modelAndView.addObject("staff", staff);
+        return modelAndView;
+    }
+
+    @PostMapping("/search")
+    public ModelAndView search(@RequestParam String name) {
+        List<Staff> staffList = staffService.findByName(name);
+        ModelAndView modelAndView = new ModelAndView("search");
+        modelAndView.addObject("staffList", staffList);
         return modelAndView;
     }
 }

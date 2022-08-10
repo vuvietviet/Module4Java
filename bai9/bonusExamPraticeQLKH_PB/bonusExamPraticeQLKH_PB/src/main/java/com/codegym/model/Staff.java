@@ -11,7 +11,7 @@ public class Staff {
     private Long id;
     @NotEmpty
     private String name;
-    @Min(18)
+
     private int age;
     @Min(0)
     private int salary;
